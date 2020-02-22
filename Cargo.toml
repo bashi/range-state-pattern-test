@@ -1,0 +1,27 @@
+[package]
+name = "range-state-pattern-test"
+version = "0.1.0"
+authors = ["Kenichi Ishibashi <ishibashi.kenichi@gmail.com>"]
+edition = "2018"
+license = "Apache-2.0"
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+wasm-bindgen = "0.2.58"
+console_error_panic_hook = "0.1.6"
+log = "0.4.8"
+console_log = "0.1.2"
+
+[dependencies.web-sys]
+version = "0.3.35"
+features = [
+  "Node",
+  "HtmlCanvasElement",
+  "HtmlElement",
+  "CanvasRenderingContext2d",
+  "Element",
+  "Document",
+  "Window",
+]

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>State pattern test</title>
+</head>
+
+<body>
+  <style>
+    canvas {
+      border: 1px solid #ccc;
+    }
+  </style>
+  <canvas id="range-canvas" width="800" height="200"></canvas>
+  <div>
+    <ul>
+      <li>Drag empty regions to create a new range</li>
+      <li>Click a range to select the range</li>
+      <ul>
+        <li>Press Del to delete the selected range</li>
+        <li>Press Esc to deselect the range</li>
+      </ul>
+      <li>Drag left/right edges to update a range</li>
+    </ul>
+  </div>
+
+  <script type="module">
+    import init, { RangeCanvas } from "./pkg/range_state_machine.js";
+
+    async function main() {
+      const canvas = document.getElementById('range-canvas');
+
+      // Adjust canvas size
+      const cs = getComputedStyle(document.body);
+      const margin = parseInt(cs.margin);
+      canvas.width = parseInt(cs.width);
+
+      const wasm = await init();
+      wasm.setup_for_debug();
+
+      const rangeCanvas = new RangeCanvas();
+
+      // Event handlers
+      canvas.addEventListener('mousedown', e => {
+        rangeCanvas.on_mouse_down(e.offsetX, e.offsetY);
+      });
+      canvas.addEventListener('mouseup', e => {
+        rangeCanvas.on_mouse_up(e.offsetX, e.offsetY);
+      });
+      canvas.addEventListener('mousemove', e => {
+        rangeCanvas.on_mouse_move(e.offsetX, e.offsetY);
+      });
+      document.body.addEventListener('keyup', e => {
+        rangeCanvas.on_key_up(e.key);
+      });
+    }
+
+    main();
+  </script>
+</body>
+
+</html>
