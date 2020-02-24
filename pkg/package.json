@@ -1,0 +1,16 @@
+{
+  "name": "range-state-pattern-test",
+  "collaborators": [
+    "Kenichi Ishibashi <ishibashi.kenichi@gmail.com>"
+  ],
+  "version": "0.1.0",
+  "license": "Apache-2.0",
+  "files": [
+    "range_state_pattern_test_bg.wasm",
+    "range_state_pattern_test.js",
+    "range_state_pattern_test.d.ts"
+  ],
+  "module": "range_state_pattern_test.js",
+  "types": "range_state_pattern_test.d.ts",
+  "sideEffects": false
+}
